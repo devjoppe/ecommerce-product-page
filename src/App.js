@@ -1,17 +1,15 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faCoffee, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
-import Button from "./components/Button";
+import Addtocartbar from "./components/Addtocartbar";
 
-library.add(faCheckSquare, faCoffee)
+library.add(faCheckSquare, faCoffee, faCartShopping)
 
 function App() {
   return (
     <div className="App">
       <h1>Testar</h1>
-      <div className="addproduct">
-        <Button buttonText={'Add to cart'} />
-      </div>
+      <Addtocartbar></Addtocartbar>
     </div>
   );
 }
