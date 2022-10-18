@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const Button = ({ buttonText }) => {
   return (
-    <button className="mainbutton">{buttonText}</button>
+    <button className="mainbutton"><FontAwesomeIcon icon="coffee" className='buttonicon' />{buttonText}</button>
   )
 }
 
