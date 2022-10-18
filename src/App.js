@@ -4,7 +4,9 @@ function App() {
   return (
     <div className="App">
       <h1>Testar</h1>
-      <Button />
+      <div className="addproduct">
+        <Button buttonText={'Add to cart'} />
+      </div>
     </div>
   );
 }

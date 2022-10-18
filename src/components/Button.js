@@ -1,7 +1,11 @@
-const Button = () => {
+const Button = ({ buttonText }) => {
   return (
-    <div>Button</div>
+    <button className="mainbutton">{buttonText}</button>
   )
+}
+
+Button.defaultProps = {
+    buttonText: 'Click me',
 }
 
 export default Button
