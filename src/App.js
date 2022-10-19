@@ -7,9 +7,16 @@ library.add(faCheckSquare, faCoffee, faCartShopping)
 
 function App() {
   return (
-    <div className="App">
-      <h1>Testar</h1>
-      <Addtocartbar></Addtocartbar>
+    <div className="app">
+        <div className="container">
+          <div className="left-side"></div>
+
+          <div className="right-side">
+            {/* Select how many products and add to cart */}
+            <Addtocartbar></Addtocartbar>
+          </div>
+
+      </div>
     </div>
   );
 }

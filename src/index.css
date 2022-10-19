@@ -10,6 +10,31 @@ body {
   font-family: 'Kumbh Sans', sans-serif;
 }
 
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1015px;
+  display: inline-flex;
+  gap: 120px;
+}
+
+.left-side {
+  flex: 1;
+  background: purple;
+}
+
+.right-side {
+  flex: 1;
+  background: teal;
+}
+
+
 .addproduct {
   display: flex;
   width: 450px;
@@ -21,6 +46,8 @@ body {
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
+  height: 56px;
+  cursor: pointer;
 }
 
 .red-button {
@@ -29,10 +56,15 @@ body {
   color: white;
 }
 
+.red-button:hover {
+  background: hsla(26, 100%, 71%, 1)
+}
+
 .grey-button {
   background: #F6F8FD;
   color: #FF7E1B;
   font-weight: 700;
+  font-size: 18px;
 }
 
 .full-width {
