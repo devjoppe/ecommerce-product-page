@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Button = ({ buttonText, buttonWidth, buttonIcon, buttonType }) => {
+const Button = ({ buttonText, buttonWidth, buttonIcon, buttonType, clickFunction }) => {
   return (
-    <button style={{width: buttonWidth}} className={buttonType}><FontAwesomeIcon icon={buttonIcon} className='buttonicon' />{buttonText}</button>
+    <button onClick={clickFunction} style={{width: buttonWidth}} className={buttonType}><FontAwesomeIcon icon={buttonIcon} className='buttonicon' />{buttonText}</button>
   )
 }
 
