@@ -1,3 +1,52 @@
+// Import font
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;600;700&display=swap');
+
+// Colors
+// Primary colors
+$color-primary-orange: hsl(26, 100%, 55%);
+$color-primary-pale-orange: hsl(25, 100%, 94%);
+
+// Neutral colors
+$color-very-dark-blue: hsl(220, 13%, 13%);
+$color-dark-greyish-blue: hsl(219, 9%, 45%);
+$color-grayish-blue:hsl(220, 14%, 75%);
+$color-light-greyish-blue: hsl(223, 64%, 98%);
+$color-white: hsl(0, 0%, 100%);
+$color-black: hsla(0, 0%, 0%, 75%);
+
+// Global settings
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+// Fonts
+p {
+    font-size: 16px;
+}
+
+// Main layout
+.screen-width {
+    display: flex;
     background: red;
+    height: 100vh;
+    justify-content: center;
+}
+
+.website-width {
+    display: flex;
+    gap: 125px;
+    box-sizing: border-box;
+    width: 1440px;
+    background: blue;
+    padding: 0 165px 0 165px;
+}
+
+.right, .left {
+    flex: 1;
+    background: yellow;
 }
