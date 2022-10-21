@@ -1,0 +1,13 @@
+@use 'config';
+
+.addtocart {
+    display: flex;
+    height: 56px;
+    align-items: center;
+    background: red;
+    font-size: 20px;
+}
+
+.addtocart--numberitems {
+    background: config.$color-light-greyish-blue;
+}

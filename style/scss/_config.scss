@@ -29,6 +29,19 @@ p {
     font-size: 16px;
 }
 
+// Buttons
+button {
+    height: 56px;
+    font-weight: 700;
+    border: 0;
+    border-radius: 10px;
+    &.primary {
+        background: $color-primary-orange;
+        color: $color-white;
+        box-shadow: 0px 20px 50px -20px #FF7E1B;
+    }
+}
+
 // Main layout
 .screen-width {
     display: flex;
