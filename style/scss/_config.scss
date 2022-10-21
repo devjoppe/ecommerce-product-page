@@ -22,6 +22,7 @@ $color-black: hsla(0, 0%, 0%, 75%);
 
 body {
     font-family: 'Kumbh Sans', sans-serif;
+    color: $color-very-dark-blue;
 }
 
 // Fonts
@@ -40,12 +41,16 @@ button {
         color: $color-white;
         box-shadow: 0px 20px 50px -20px #FF7E1B;
     }
+    &.secondary {
+        background: $color-light-greyish-blue;
+        color: $color-primary-orange;
+    }
 }
 
 // Main layout
 .screen-width {
     display: flex;
-    background: red;
+    //background: red;
     height: 100vh;
     justify-content: center;
 }
@@ -55,11 +60,16 @@ button {
     gap: 125px;
     box-sizing: border-box;
     width: 1440px;
-    background: blue;
+    //background: blue;
     padding: 0 165px 0 165px;
 }
 
 .right, .left {
     flex: 1;
-    background: yellow;
+    //background: yellow;
+}
+
+// Style attributes
+.radius {
+    border-radius: 10px;
 }

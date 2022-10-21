@@ -4,10 +4,23 @@
     display: flex;
     height: 56px;
     align-items: center;
-    background: red;
+    //background: red;
     font-size: 20px;
 }
 
 .addtocart--numberitems {
+    display: flex;
+    //background: blue;
     background: config.$color-light-greyish-blue;
+    height: inherit;
+    align-items: center;
+    > button {
+        width: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    span {
+        font-weight: 700;
+    }
 }
