@@ -10,7 +10,7 @@
 
 .addtocart--numberitems {
     display: flex;
-    //background: blue;
+    margin-right: 16px;
     background: config.$color-light-greyish-blue;
     height: inherit;
     align-items: center;
@@ -21,6 +21,7 @@
         align-items: center;
     }
     span {
+        margin: 0 16px 0 16px;
         font-weight: 700;
     }
 }

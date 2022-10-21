@@ -21,14 +21,17 @@
       </div>
       
       <div class="right">
+        <p id="titletext">Title</p>
+        <p id="description">Description</p>
+        <span id="itemprice">Price</span><span>kr</span>
         <div class="addtocart">
           <div class="addtocart--numberitems radius">
-            <button class="secondary"><img src="images/icon-plus.svg"></button>
-            <span>0</span>
-            <button class="secondary"><img src="images/icon-minus.svg"></button>
+            <button id="itemadd" class="secondary" onclick="addRemove('add')"><img src="images/icon-plus.svg"></button>
+            <span id="itemresult">1</span>
+            <button id="itemremove" class="secondary" onclick="addRemove('remove')"><img src="images/icon-minus.svg"></button>
           </div>
-          <div class="addtocart--product">
-            <button class="primary">Add to cart</button>
+          <div class="addtocart--product max-width">
+            <button class="primary max-width">Add to cart</button>
           </div>
         </div>
       </div>
@@ -56,6 +59,8 @@
 
   0
   Add to cart -->
+
+  <script src="js/jo-scripts-0_5.js"></script>
   
 </body>
 </html>
