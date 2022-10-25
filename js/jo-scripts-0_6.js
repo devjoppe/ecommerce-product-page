@@ -1,3 +1,30 @@
+// JSON - Get data from local .json-file
+async function getProduct() {
+    const requestURL = '/json/data.json';
+    const request = new Request(requestURL);
+
+    const response = await fetch(request);
+    const productInfo = await response.json();
+
+    //Create a new function that sends the array as a arg.
+    productResult(productInfo);
+    
+}
+
+//Function to display the array data from .json file.
+function productResult(obj) {
+    const textTitle = document.getElementById('titletext');
+    const textDescription = document.getElementById('description');
+    
+    const textContentTitle = obj.products[0].title;
+    const textContentDescription = obj.products[0].description;
+
+    textTitle.append(textContentTitle);
+    textDescription.append(textContentDescription);
+}
+
+getProduct();
+
 let itemNumber = 1;
 let itemPrice = 250;
 let itemDiscount = 0.5;
@@ -15,21 +42,25 @@ const discountPrice = discount => {
 // Assign the new price width the discount.
 itemPrice = discountPrice(itemDiscount);
 
+/* const productInfo = [];
+
+let textTitle = 'Title';
+let textDescription = 'Description';
 
 const productRequest = new Request('json/data.json');
-// Fetch and print Json-data ->
+
 fetch(productRequest)
   .then((response) => response.json())
   .then((data) => {
     for (const product of data.products) {
-      let textTitle = product.title;
-      let textDescription = product.description;
-      console.log(textTitle);
+        textTitle = product.title;
+        textDescription = product.description;
+        console.log(data);
     }
   })
-  .catch(console.error);
+  .catch(console.error); */
 
-  console.log(textTitle);
+  
 
 // Json data ###################################################################
 /* async function printJSON(url) {
