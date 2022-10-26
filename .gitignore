@@ -22,3 +22,5 @@ README-template.md
 /.vscode
 prepros.config
 /json
+/js/jo-scripts-0_5.js
+/js/jo-scripts-0_6.js
