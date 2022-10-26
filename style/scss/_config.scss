@@ -28,6 +28,13 @@ body {
 // Fonts
 p {
     font-size: 16px;
+    font-weight: 400;
+    color: $color-dark-greyish-blue;
+}
+
+h1 {
+    font-size: 44px;
+    font-weight: 700;
 }
 
 // Buttons
