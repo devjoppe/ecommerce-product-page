@@ -11,33 +11,38 @@ const product = {
 // Set variables for the DOM elements
 const titleText = document.getElementById('titletext');
 const descriptionText = document.getElementById('description');
-const priceText = document.getElementById('itemprice') // Maybe set these as variables so I can change them
-const numberOfItems = document.getElementById('itemresult') // This one to
+const priceText = document.getElementById('itemprice'); // Maybe set these as variables so I can change them
+const numberOfItems = document.getElementById('itemresult'); // This one to
 
 // Calculate if the price has a discount or not and give it a new total price.
 let totalPrice = product.price;
 
 if (product.discount > 0) {
     totalPrice = totalPrice*product.discount;
-    console.log(totalPrice);
+    //console.log(totalPrice);
 }
 
 // Calculate the number of how many items the customer by clicking on the buttons add and remove
+// Printing out the number of times and the updated price based on number.
 let addTotalPrice = totalPrice;
 let itemNumber = 1;
 
-function addRemove (btnType) {
+const addRemove = btnType => {
     if (btnType == 'add') {
         itemNumber++
         addTotalPrice += totalPrice;
+        //console.log(addTotalPrice);
     } else if (btnType == 'remove' && itemNumber >= 2 ) {
+        //console.log('minus');
         itemNumber--
         addTotalPrice -= totalPrice;
     }
+    priceText.innerHTML = `${addTotalPrice}`;
+    numberOfItems.innerHTML = `${itemNumber}`;
 }
 
-// Bind the data and display it to the DOM
+// Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
 titleText.append(product.title);
 descriptionText.append(product.description);
-priceText.append(totalPrice);
-itemresult.append(itemNumber);
+priceText.append(addTotalPrice);
+numberOfItems.append(itemNumber);
