@@ -37,12 +37,13 @@ const addRemove = btnType => {
         itemNumber--
         addTotalPrice -= totalPrice;
     }
+    // Prints out the new value to the DOM
     priceText.innerHTML = `${addTotalPrice}`;
     numberOfItems.innerHTML = `${itemNumber}`;
 }
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
-titleText.append(product.title);
-descriptionText.append(product.description);
-priceText.append(addTotalPrice);
-numberOfItems.append(itemNumber);
+titleText.innerHTML = `${product.title}`;
+descriptionText.innerHTML = `${product.description}`;
+priceText.innerHTML = `${addTotalPrice}.00`;
+numberOfItems.innerHTML = `${itemNumber}`;
