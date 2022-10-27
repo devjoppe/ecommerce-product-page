@@ -21,13 +21,19 @@
       </div>
       
       <div class="right">
-        <h1 id="titletext"></h1>
-        <p id="description"></p>
-        <span id="itemprice"></span>
+        <div class="product--description">
+          <h1 id="titletext"></h1>
+          <p id="description"></p>
+        </div>
+        <div class="product--price">
+          <span>$</span>
+          <span id="itemprice">Product price</span>
+          <span id="discountprice" class="discount">50%</span>
+        </div>
         <div class="addtocart">
           <div class="addtocart--numberitems radius">
             <button id="itemadd" class="secondary" onclick="addRemove('add')"><img src="images/icon-plus.svg"></button>
-            <span id="itemresult"></span>
+            <span id="itemresult">Number of items</span>
             <button id="itemremove" class="secondary" onclick="addRemove('remove')"><img src="images/icon-minus.svg"></button>
           </div>
           <div class="addtocart--product max-width">
