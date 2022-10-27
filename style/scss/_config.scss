@@ -7,7 +7,7 @@ $color-primary-orange: hsl(26, 100%, 55%);
 $color-primary-pale-orange: hsl(25, 100%, 94%);
 
 // Neutral colors
-$color-very-dark-blue: hsl(220, 13%, 13%);
+$color-very-dark-blue: hsla(220, 14%, 13%, 1);
 $color-dark-greyish-blue: hsl(219, 9%, 45%);
 $color-grayish-blue:hsl(220, 14%, 75%);
 $color-light-greyish-blue: hsl(223, 64%, 98%);
@@ -30,11 +30,13 @@ p {
     font-size: 16px;
     font-weight: 400;
     color: $color-dark-greyish-blue;
+    line-height: 26px;
 }
 
 h1 {
     font-size: 44px;
     font-weight: 700;
+    line-height: 48px;
 }
 
 // Buttons
