@@ -13,13 +13,17 @@ const titleText = document.getElementById('titletext');
 const descriptionText = document.getElementById('description');
 const priceText = document.getElementById('itemprice'); // Maybe set these as variables so I can change them
 const numberOfItems = document.getElementById('itemresult'); // This one to
+const discountProcentText = document.getElementById('discountprice');
 
 // Calculate if the price has a discount or not and give it a new total price.
 let totalPrice = product.price;
+let discountTotal = product.discount*100;
 
 if (product.discount > 0) {
     totalPrice = totalPrice*product.discount;
-    //console.log(totalPrice);
+
+    // If the exist, print the total value in the DOM
+    discountProcentText.innerHTML = `${discountTotal}%`;
 }
 
 // Calculate the number of how many items the customer by clicking on the buttons add and remove
