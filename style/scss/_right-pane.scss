@@ -8,6 +8,22 @@
     font-size: 20px;
 }
 
+.product--price {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 32px 0 32px 0;
+    .discount {
+        font-size: 16px;
+        color: config.$color-primary-orange;
+        background: config.$color-primary-pale-orange;
+        padding: 4px 8px 4px 8px;
+        border-radius: 6px;
+        margin-left: 23px;
+    }
+}
+
 .addtocart--numberitems {
     width: 165px;
     display: flex;
