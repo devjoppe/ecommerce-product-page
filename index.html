@@ -3,37 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <link rel="stylesheet" href="style/css/style.min.css">
-  
   <title>Joakim Ottosson | E-commerce product page</title>
-
 </head>
 <body>
   <div class="screen-width">
-    
     <div class="website-width">
-      
       <div class="left">
-        <p>Vänster sida</p>
+        <div class="mainimage" class="mainimage--image">
+          <!-- Main image -->
+        </div>
+        <div id="thumbs" class="thumbnail--images">
+          <!-- Thumbnail images -->
+        </div>
       </div>
-      
       <div class="right">
         <div class="product--description">
           <h1 id="titletext"></h1>
           <p id="description"></p>
         </div>
         <div class="product--price">
-          <span>$</span>
-          <span id="itemprice">Product price</span>
-          <span id="discountprice" class="discount">50%</span>
+          <div class="price">
+            <span id="itemprice"><!-- Product price --></span>
+            <span id="discountprice" class="discount"><!-- Discount --></span>
+          </div>
+          <div class="ordinaryprice">
+            <span id="oldprice"><!-- Ordinary price --></span>
+          </div>
         </div>
         <div class="addtocart">
           <div class="addtocart--numberitems radius">
             <button id="itemadd" class="secondary" onclick="addRemove('add')"><img src="images/icon-plus.svg"></button>
-            <span id="itemresult">Number of items</span>
+            <span id="itemresult"><!-- Number of items--></span>
             <button id="itemremove" class="secondary" onclick="addRemove('remove')"><img src="images/icon-minus.svg"></button>
           </div>
           <div class="addtocart--product max-width">
@@ -41,31 +43,8 @@
           </div>
         </div>
       </div>
-    
     </div>
   </div>
-
-  <!-- Collections
-  Men
-  Women
-  About
-  Contact
-
-  Sneaker Company
-
-  Fall Limited Edition Sneakers
-
-  These low-profile sneakers are your perfect casual wear companion. Featuring a 
-  durable rubber outer sole, they’ll withstand everything the weather can offer.
-
-  $125.00
-  50%
-  $250.00
-
-  0
-  Add to cart -->
-
   <script src="js/jo-script-0_3.js"></script>
-  
 </body>
 </html>

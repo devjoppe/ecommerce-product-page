@@ -1,0 +1,35 @@
+@use 'config';
+
+.thumbnail--images {
+    display: flex;
+    justify-content: space-between;
+    .thumbimage {
+        display: block;
+        width: 88px;
+        height: 88px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        img {
+            width: inherit;
+            border-radius: 10px;
+            &:hover {
+                opacity: 0.5;
+                cursor: pointer;
+            }
+        }
+        &:hover {
+            border: 3px solid config.$color-primary-orange;
+        }
+    }
+}
+
+.imagehover {
+
+}
+
+.selected {
+    opacity: 0.5;
+    border: 3px solid config.$color-primary-orange;
+    box-sizing: content-box;
+    border-radius: 14px;
+}
