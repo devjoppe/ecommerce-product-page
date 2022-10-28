@@ -5,7 +5,7 @@ const product = {
     price: 250,
     discount: 0.5,
     image: ['image-product-1.jpg'],
-    thumbnails: ['image-product-1-thumbnail.jpg', 'image-product-2-thumbnail.jpg', 'image-product-3-thumbnail.jpg']
+    thumbnails: ['image-product-1-thumbnail.jpg', 'image-product-2-thumbnail.jpg', 'image-product-3-thumbnail.jpg', 'image-product-4-thumbnail.jpg']
 }
 
 // Set variables for the DOM elements
@@ -54,14 +54,18 @@ const addRemove = btnType => {
 }
 
 // Thumbnails
-// Create a variable for the array in the object
+// Create a variables for the array in the object and display
 let productThumbs = product.thumbnails;
+let thumbURL = ``;
 
 // Gets the data from the Array and print out the data in a for-loop
 for (let i = 0; i < productThumbs.length; i++) {
-    let thumbURL = `<div><img src="images/${productThumbs[i]}"></div>`;
+    thumbURL = `<div class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
     imageThumbnails.innerHTML += `${thumbURL}`;
 }
+
+// Main image function
+
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
 titleText.innerHTML = `${product.title}`;
