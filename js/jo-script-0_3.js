@@ -16,6 +16,7 @@ const numberOfItems = document.getElementById('itemresult'); // This one to
 const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 const imageThumbnails = document.getElementById('thumbs'); // Maybe set this dynamic
+const mainImage = document.getElementById('mainimage');
 
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
@@ -57,14 +58,21 @@ const addRemove = btnType => {
 // Create a variables for the array in the object and display
 let productThumbs = product.thumbnails;
 let thumbURL = ``;
+let idNumber = 0;
 
 // Gets the data from the Array and print out the data in a for-loop
 for (let i = 0; i < productThumbs.length; i++) {
-    thumbURL = `<div class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
+    //Create a ID number for the div so I can target it
+    idNumber = (i+1);
+    //Prints out the div with the thumbnail
+    thumbURL = `<div id="thumbnail-${idNumber}" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
     imageThumbnails.innerHTML += `${thumbURL}`;
 }
 
 // Main image function
+idNumber = 1;
+let displayMainImage = `<img src="images/image-product-${idNumber}.jpg">`;
+mainImage.innerHTML += `${displayMainImage}`;
 
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
