@@ -60,19 +60,35 @@ let productThumbs = product.thumbnails;
 let thumbURL = ``;
 let idNumber = 0;
 
-// Gets the data from the Array and print out the data in a for-loop
+// Gets the data from the Array and print out the data in a for-loop for the thumbs
 for (let i = 0; i < productThumbs.length; i++) {
     //Create a ID number for the div so I can target it
     idNumber = (i+1);
     //Prints out the div with the thumbnail
-    thumbURL = `<div id="thumbnail-${idNumber}" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
+    thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
     imageThumbnails.innerHTML += `${thumbURL}`;
 }
 
 // Main image function
+// Displaying the first main image when the pages is loaded
 idNumber = 1;
-let displayMainImage = `<img src="images/image-product-${idNumber}.jpg">`;
+
+let displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
 mainImage.innerHTML += `${displayMainImage}`;
+
+// Clicking on the thumb to display a new main image based in ID
+const thumbClick = imageId => {
+    //console.log(imageId);
+    idNumber = imageId;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
+    mainImage.innerHTML = `${displayMainImage}`;
+}
+
+// Modal function
+//This function can be used on the modal function
+function sayHello () {
+    console.log("hejsan");
+}
 
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
