@@ -70,18 +70,20 @@ for (let i = 0; i < productThumbs.length; i++) {
 }
 
 // Main image function
-// Displaying the first main image when the pages is loaded
-idNumber = 1;
-
-let displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
-mainImage.innerHTML += `${displayMainImage}`;
+// Set IdNummer to zero to inital set and load the first image.
+idNumber = 0;
+let displayMainImage = ``;
 
 // Clicking on the thumb to display a new main image based in ID
 const thumbClick = imageId => {
-    //console.log(imageId);
     idNumber = imageId;
     displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
     mainImage.innerHTML = `${displayMainImage}`;
+}
+
+// First time the page load it fires the thumbClick function with the first image
+if (idNumber == 0) {
+    thumbClick(1);
 }
 
 // Modal function
