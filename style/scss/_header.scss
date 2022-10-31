@@ -1,0 +1,50 @@
+@use 'config';
+
+.header--right {
+    display: flex;
+    align-items: center;
+    .user {
+        margin-left: 45px;
+        img {
+            display: block;
+            box-sizing: border-box;
+            border-radius: 50%;
+            height: 55px;
+            &:hover {
+                cursor: pointer;
+                border: 2px solid config.$color-primary-orange;
+            }
+        }
+    }
+}
+
+.header--left {
+    display: flex;
+    align-items: center;
+    .logo {
+        margin-right: 56px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+    }
+    .menu {
+        a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 32px;
+            color: config.$color-dark-greyish-blue;
+            height: 120px;
+            box-sizing: border-box;
+            &:hover {
+                border-bottom: 3px solid config.$color-primary-orange;
+                color: config.$color-very-dark-blue;
+            }
+            &:focus {
+                border-bottom: 3px solid config.$color-primary-orange;
+                color: config.$color-very-dark-blue;
+            }
+        }
+    }
+}
+

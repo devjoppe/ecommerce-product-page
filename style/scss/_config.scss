@@ -11,6 +11,7 @@ $color-very-dark-blue: hsla(220, 14%, 13%, 1);
 $color-dark-greyish-blue: hsl(219, 9%, 45%);
 $color-grayish-blue:hsl(220, 14%, 75%);
 $color-light-greyish-blue: hsl(223, 64%, 98%);
+$color-light-grey: hsla(219, 35%, 92%, 1);
 $color-white: hsl(0, 0%, 100%);
 $color-black: hsla(0, 0%, 0%, 75%);
 
@@ -64,6 +65,22 @@ button {
 }
 
 // Main layout
+main {
+    display: flex;
+}
+
+nav {
+    display: flex;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 90px;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-light-grey;
+}
+
 .screen-width {
     display: flex;
     //background: red;
@@ -73,16 +90,15 @@ button {
 
 .website-width {
     display: flex;
-    gap: 125px;
+    //gap: 125px;
     box-sizing: border-box;
     width: 1440px;
-    //background: blue;
+    flex-direction: column;
     padding: 0 165px 0 165px;
 }
 
 .right, .left {
-    flex: 1;
-    //background: yellow;
+    margin: 0 55px 0 55px;
 }
 
 // Style attributes
