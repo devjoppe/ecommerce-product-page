@@ -28,20 +28,17 @@
             box-sizing: border-box;
             z-index: 0;
             &:hover {
-                opacity: 0.7;
+                opacity: 0.5;
                 cursor: pointer;
             }
-        }
-        &:hover {
-            border: 3px solid config.$color-primary-orange;
         }
     }
 }
 
 // Lets see how to handle this
 .selected {
-    border: 3px solid config.$color-primary-orange;
+    border: 2px solid config.$color-primary-orange;
     img {
-        opacity: 0.7;
+        opacity: 0.5;
     }
 }

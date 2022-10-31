@@ -1,6 +1,7 @@
 // Object to hold the data
 const product = {
-    title : 'Fall Limited Edition Sneakers',
+    company: 'Sneaker Company',
+    title: 'Fall Limited Edition Sneakers',
     description: 'These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.',
     price: 250,
     discount: 0.5,
@@ -17,6 +18,7 @@ const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 const imageThumbnails = document.getElementById('thumbs'); // Maybe set this dynamic
 const mainImage = document.getElementById('mainimage');
+const productCompanyText = document.getElementById('productcompany');
 
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
@@ -111,9 +113,8 @@ function sayHello () {
 }
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
+productCompanyText.innerHTML = `${product.company}`;
 titleText.innerHTML = `${product.title}`;
 descriptionText.innerHTML = `${product.description}`;
 priceText.innerHTML = `$${addTotalPrice}.00`;
 numberOfItems.innerHTML = `${itemNumber}`;
-
-//NEXT : Want to add a class to the div when the div is selected.
