@@ -79,7 +79,25 @@ const thumbClick = imageId => {
     idNumber = imageId;
     displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
     mainImage.innerHTML = `${displayMainImage}`;
+   
+    // Starts function that checks if it is the active div
+    thumbSlectedRemove(idNumber);
 }
+
+// Functions that add Selected on the clicked div
+const thumbSlectedRemove = divId => {
+    console.log("Startar funktionen");
+    for (let i = 0; i < productThumbs.length; i++) {
+        let idNumber = (i+1);
+        const thumbSelected = document.getElementById("thumbnail-"+idNumber);
+        if(idNumber == divId) {
+            thumbSelected.classList.add("selected");
+        } else {
+            thumbSelected.classList.remove("selected");
+        }
+    }
+}
+
 
 // First time the page load it fires the thumbClick function with the first image
 if (idNumber == 0) {
@@ -92,9 +110,10 @@ function sayHello () {
     console.log("hejsan");
 }
 
-
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
 titleText.innerHTML = `${product.title}`;
 descriptionText.innerHTML = `${product.description}`;
 priceText.innerHTML = `$${addTotalPrice}.00`;
 numberOfItems.innerHTML = `${itemNumber}`;
+
+//NEXT : Want to add a class to the div when the div is selected.
