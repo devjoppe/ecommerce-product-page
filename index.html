@@ -10,40 +10,62 @@
 <body>
   <div class="screen-width">
     <div class="website-width">
-      <div class="left">
-        <div id="mainimage" class="mainimage--image">
-          <!-- Main image -->
-        </div>
-        <div id="thumbs" class="thumbnail--images">
-          <!-- Thumbnail images -->
-        </div>
-      </div>
-      <div class="right">
-        <div id="productcompany" class="product--company"><!-- Company --></div>
-        <div class="product--description">
-          <h1 id="titletext"><!-- Product title --></h1>
-          <p id="description"><!-- Description text --></p>
-        </div>
-        <div class="product--price">
-          <div class="price">
-            <span id="itemprice"><!-- Product price --></span>
-            <span id="discountprice" class="discount"><!-- Discount --></span>
+      <header>
+        <div class="header">
+          <div class="header--left">
+            <div class="logo"><img src="images/logo.svg"></div>
+            <div class="menu">
+              <nav>
+                <a href="#">Collections</a>
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+              </nav>
+            </div>
           </div>
-          <div class="ordinaryprice">
-            <span id="oldprice"><!-- Ordinary price --></span>
+          <div class="header--right">
+            <div class="cart"><img src="images/icon-cart.svg"></div>
+            <div class="user"><img src="images/image-avatar.png"></div>
           </div>
         </div>
-        <div class="addtocart">
-          <div class="addtocart--numberitems radius">
-            <button id="itemadd" class="secondary" onclick="addRemove('add')"><img src="images/icon-plus.svg"></button>
-            <span id="itemresult"><!-- Number of items--></span>
-            <button id="itemremove" class="secondary" onclick="addRemove('remove')"><img src="images/icon-minus.svg"></button>
+      </header>
+      <main>
+        <div class="left">
+          <div id="mainimage" class="mainimage--image">
+            <!-- Main image -->
           </div>
-          <div class="addtocart--product max-width">
-            <button class="primary max-width">Add to cart</button>
+          <div id="thumbs" class="thumbnail--images">
+            <!-- Thumbnail images -->
           </div>
         </div>
-      </div>
+        <div class="right">
+          <div id="productcompany" class="product--company"><!-- Company --></div>
+          <div class="product--description">
+            <h1 id="titletext"><!-- Product title --></h1>
+            <p id="description"><!-- Description text --></p>
+          </div>
+          <div class="product--price">
+            <div class="price">
+              <span id="itemprice"><!-- Product price --></span>
+              <span id="discountprice" class="discount"><!-- Discount --></span>
+            </div>
+            <div class="ordinaryprice">
+              <span id="oldprice"><!-- Ordinary price --></span>
+            </div>
+          </div>
+          <div class="addtocart">
+            <div class="addtocart--numberitems radius">
+              <button id="itemadd" class="secondary" onclick="addRemove('add')"><img src="images/icon-plus.svg"></button>
+              <span id="itemresult"><!-- Number of items--></span>
+              <button id="itemremove" class="secondary" onclick="addRemove('remove')"><img src="images/icon-minus.svg"></button>
+            </div>
+            <div class="addtocart--product max-width">
+              <button class="primary max-width">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
   <script src="js/jo-script-0_3.js"></script>
