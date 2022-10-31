@@ -100,7 +100,6 @@ const thumbSlectedRemove = divId => {
     }
 }
 
-
 // First time the page load it fires the thumbClick function with the first image
 if (idNumber == 0) {
     thumbClick(1);
