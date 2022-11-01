@@ -21,6 +21,8 @@ const mainImage = document.getElementById('mainimage');
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
 const cartItemsText = document.getElementById("cartitems");
+const cartIcon = document.getElementById("cart");
+const cartIconNumber = document.getElementById("cartnumber");
 
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
@@ -120,6 +122,7 @@ const addToCart = inCart => {
     console.log("CART");
     if (itemCartCheck >= 1) {
         console.log("adding to cart" + addTotalPrice);
+        cartIconNumber.innerHTML = `<div class="cart-number">${itemNumber}</div>`;
         cartItemsText.innerHTML = `
         <div class="choosen-item">
              <div class="item-data">
@@ -135,12 +138,10 @@ const addToCart = inCart => {
         `;
     } else {
         cartItemsText.innerHTML = displayInCart;
+        cartIconNumber.innerHTML = ``;
         console.log("No items in cart");
     }
 }
-
-//Function for displaying number of items in the cart icon.
-
 
 // First time the page load it fires the thumbClick function with the first image
 if (idNumber == 0) {
