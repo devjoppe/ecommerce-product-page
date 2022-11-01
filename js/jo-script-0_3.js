@@ -111,7 +111,9 @@ const displayCart = () => {
 
 // Updates the cart and displays the information, or remove items from the cart
 let itemCartCheck = 0;
-let displayInCart = "";
+// Set and print out when the website starts
+const displayInCart = `<span class="empty-cart">Your cart is empty.</span>`;
+cartItemsText.innerHTML = displayInCart;
 
 const addToCart = inCart => {
     itemCartCheck = inCart;
@@ -131,12 +133,14 @@ const addToCart = inCart => {
             <button class="primary">Checkout</button>
         </div>
         `;
-    } else if (itemCartCheck == 0) {
-        displayInCart = `<span class="empty-cart">Your cart is empty.</span>`;
+    } else {
         cartItemsText.innerHTML = displayInCart;
         console.log("No items in cart");
     }
 }
+
+//Function for displaying number of items in the cart icon.
+
 
 // First time the page load it fires the thumbClick function with the first image
 if (idNumber == 0) {
