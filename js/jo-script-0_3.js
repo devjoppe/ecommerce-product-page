@@ -19,6 +19,8 @@ const ordinaryPriceText = document.getElementById('oldprice');
 const imageThumbnails = document.getElementById('thumbs'); // Maybe set this dynamic
 const mainImage = document.getElementById('mainimage');
 const productCompanyText = document.getElementById('productcompany');
+const cartCheckout = document.getElementById("cartcheckout");
+const cartItemsText = document.getElementById("cartitems");
 
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
@@ -97,6 +99,42 @@ const thumbSlectedRemove = divId => {
         } else {
             thumbSelected.classList.remove("selected");
         }
+    }
+}
+
+// Cart functions
+const displayCart = () => {
+    console.log("Toggeling the cart");
+    // Displaying and hiding the cart
+    cartCheckout.classList.toggle("none-display");
+}
+
+// Updates the cart and displays the information, or remove items from the cart
+let itemCartCheck = 0;
+let displayInCart = "";
+
+const addToCart = inCart => {
+    itemCartCheck = inCart;
+    console.log("CART");
+    if (itemCartCheck >= 1) {
+        console.log("adding to cart" + addTotalPrice);
+        cartItemsText.innerHTML = `
+        <div class="choosen-item">
+             <div class="item-data">
+                <div class="image"><img src="images/${product.thumbnails[0]}"></div>
+                <div class="description">
+                    <span class="description-title">${product.title}</span>
+                    <span class="description-number">$${totalPrice}.00 x ${itemNumber} </span><span class="description-totalprice"> $${addTotalPrice}.00</span>
+                </div>
+                <div class="remove" onclick="addToCart(0)"><img src="images/icon-delete.svg"></div>
+            </div>
+            <button class="primary">Checkout</button>
+        </div>
+        `;
+    } else if (itemCartCheck == 0) {
+        displayInCart = `<span class="empty-cart">Your cart is empty.</span>`;
+        cartItemsText.innerHTML = displayInCart;
+        console.log("No items in cart");
     }
 }
 
