@@ -109,3 +109,13 @@ nav {
 .max-width {
     width: 100%;
 }
+
+// Attributes
+.none-display {
+    display: none !important;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+  }

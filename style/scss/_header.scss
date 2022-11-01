@@ -3,6 +3,12 @@
 .header--right {
     display: flex;
     align-items: center;
+    .cart {
+        position: relative;
+        &:hover {
+            cursor: pointer;
+        }
+    }
     .user {
         margin-left: 45px;
         img {
@@ -37,11 +43,11 @@
             height: 120px;
             box-sizing: border-box;
             &:hover {
-                border-bottom: 3px solid config.$color-primary-orange;
+                border-bottom: 4px solid config.$color-primary-orange;
                 color: config.$color-very-dark-blue;
             }
             &:focus {
-                border-bottom: 3px solid config.$color-primary-orange;
+                border-bottom: 4px solid config.$color-primary-orange;
                 color: config.$color-very-dark-blue;
             }
         }

@@ -1,0 +1,73 @@
+@use 'config';
+
+.cart--checkout {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 50px;
+    right: -180px;
+    width: 360px;
+    //height: 280px; Flytta denna till när det inte finns något i carten
+    background: config.$color-white;
+    z-index: 10;
+    border-radius: 10px;
+    box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.5);
+    .title {
+        display: flex;
+        height: 24px;
+        align-items: center;
+        padding: 24px;
+        border-bottom: 1px solid config.$color-light-grey;
+        span {
+            color: config.$color-very-dark-blue;
+            font-weight: 700;
+        }
+    }
+    .cart-items {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        .empty-cart {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: config.$color-dark-greyish-blue;
+            height: 200px;
+        }
+        .choosen-item {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            width: inherit;
+            height: inherit;
+            margin: 0 24px 0 24px;
+            padding: 24px 0 24px 0;
+            .item-data {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 26px;
+                .image {
+                    img {
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 4px;
+                        margin-right: 16px;
+                    }
+                }
+                .description {
+                    .description-title, .description-number {
+                        font-weight: 400
+                    }
+                    .description-totalprice {
+                        color: config.$color-very-dark-blue;
+                        font-weight: 700;
+                    }
+                }
+            }
+            
+        }
+    }
+}

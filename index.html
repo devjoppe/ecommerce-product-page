@@ -25,7 +25,27 @@
             </div>
           </div>
           <div class="header--right">
-            <div class="cart"><img src="images/icon-cart.svg"></div>
+            <div id="cart" class="cart"><img onclick="displayCart()" src="images/icon-cart.svg">
+              <div id="cartcheckout" class="cart--checkout"> <!-- none-display -->
+                <div class="title">
+                  <span>Cart</span>
+                </div>
+                <div id="cartitems" class="cart-items">
+                  <!-- <div class="choosen-item">
+                    <div class="item-data">
+                      <div class="image"><img src="images/image-product-1-thumbnail.jpg"></div>
+                      <div class="description">
+                        <span class="description-title">Fall Limited Edition Sneakers</span>
+                        <span class="description-number">$125.00 x 3 </span><span class="description-totalprice">$375.00</span>
+                      </div>
+                      <div class="remove" onclick="addToCart(0)"><img src="images/icon-delete.svg"></div>
+                    </div>
+                    <button class="primary">Checkout</button>
+                  </div> -->
+                  <!-- <span class="empty-cart">Your cart is empty.</span> -->
+                </div>
+              </div>
+            </div>
             <div class="user"><img src="images/image-avatar.png"></div>
           </div>
         </div>
@@ -61,7 +81,8 @@
               <button id="itemremove" class="secondary" onclick="addRemove('remove')"><img src="images/icon-minus.svg"></button>
             </div>
             <div class="addtocart--product max-width">
-              <button class="primary max-width">Add to cart</button>
+              <button class="primary max-width" onclick="addToCart(1)">Add to cart</button>
+              <!-- Kan ha samma onClick på min "ta bort" item i listan. Skicka med 0 -->
             </div>
           </div>
         </div>
