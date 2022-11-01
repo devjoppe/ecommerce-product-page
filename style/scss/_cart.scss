@@ -1,5 +1,22 @@
 @use 'config';
 
+.cart-icon-number {
+    position: absolute;
+    display: flex;
+    top: -9px;
+    right: -8px;
+    .cart-number {
+        text-align: center;
+        width: 10px;
+        background: config.$color-primary-orange;
+        border-radius: 10px;
+        font-size: 10px;
+        color: config.$color-white;
+        font-weight: 700;
+        padding: 1px 6px 2px 6px;
+    }
+}
+
 .cart--checkout {
     display: flex;
     position: absolute;
