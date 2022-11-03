@@ -68,16 +68,27 @@ const addRemove = btnType => {
 let productThumbs = product.thumbnails;
 let thumbURL = ``;
 let idNumber = 0;
+let loadView = 0;
 
-// Gets the data from the Array and print out the data in a for-loop for the thumbs
-for (let i = 0; i < productThumbs.length; i++) {
-    //Create a ID number for the div so I can target it
-    idNumber = (i+1);
-    //Prints out the div with the thumbnail
-    thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
-    imageThumbnails[0].innerHTML += `${thumbURL}`;
-    imageThumbnails[1].innerHTML += `${thumbURL}`;
+// Display thumbs on page or Modal (lightbox)
+const pageModalView = loadViewNumber => {
+    // Gets the data from the Array and print out the data in a for-loop for the thumbs
+    for (let i = 0; i < productThumbs.length; i++) {
+        //Create a ID number for the div so I can target it
+        idNumber = (i+1);
+        //Prints out the div with the thumbnail
+        thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
+        if(loadViewNumber == 0 ) {
+            imageThumbnails[1].innerHTML = ``;
+            imageThumbnails[0].innerHTML += `${thumbURL}`;
+        } else if (loadViewNumber == 1) {
+            imageThumbnails[0].innerHTML = ``;
+            imageThumbnails[1].innerHTML += `${thumbURL}`;
+        }
+    }
 }
+
+pageModalView(loadView)
 
 // Main image function
 // Set IdNummer to zero to inital set and load the first image.
@@ -87,7 +98,7 @@ let displayMainImage = ``;
 // Clicking on the thumb to display a new main image based in ID
 const thumbClick = imageId => {
     idNumber = imageId;
-    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal()">`;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(1)">`;
     mainImage.innerHTML = `${displayMainImage}`;
    
     // Starts function that checks if it is the active div
@@ -156,8 +167,10 @@ if (idNumber == 0) {
 showModal = document.querySelector('.modal--container');
 
 //This function can be used on the modal function
-function displayModal () {
+function displayModal (viewSelector) {
     showModal.classList.toggle("none-display");
+    pageModalView(viewSelector);
+    console.log(viewSelector);
 }
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
