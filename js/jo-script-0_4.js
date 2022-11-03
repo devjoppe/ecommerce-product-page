@@ -69,31 +69,39 @@ let modalStatus = false;
 let modalDiv = 'images';
 let imageThumbnails;
 
+
+// Set Modal div
+let showModal = document.querySelector('.modal--container');
+
 // Thumbnail and Modal function ###################### LOOK HERE #####################################
 let setModalDiv = (activeDiv) => {
     // Set the div base on if the Modal is open
     console.log(activeDiv);
-    imageThumbnails = document.querySelector('.thumbnail--' + activeDiv); // Maybe set this dynamic
-
-    // Gets the data from the Array and print out the data in a for-loop for the thumbs
-    for (let i = 0; i < productThumbs.length; i++) {
-        //Create a ID number for the div so I can target it
-        idNumber = (i+1);
-        //Prints out the div with the thumbnail
-        thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
-        imageThumbnails.innerHTML += `${thumbURL}`;
-    }
+    //imageThumbnails = document.querySelector('.thumbnail--' + activeDiv);
+    imageThumbnails = document.querySelector('.thumbnail--images');
 }
 
 // Set and start with a closed Modal
 setModalDiv(modalDiv);
 
-//Checks if the modal is open or closed
+// Gets the data from the Array and print out the data in a for-loop for the thumbs
+for (let i = 0; i < productThumbs.length; i++) {
+    //Create a ID number for the div so I can target it
+    idNumber = (i+1);
+    //Prints out the div with the thumbnail
+    thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
+    //imageThumbnails.innerHTML += `${thumbURL}`;
+    imageThumbnails.innerHTML += `${thumbURL}`;
+} // Måste spara ner loopen i en egen variabel, eftersom det är samma bilder som ska visas.
+// Se sedan till att ImageThumbNails ändras och lägger in variabeln beroende på vad man klickar på.
+
+//Checks if the modal is open or closed when the image or closed-icon is clicked
 function displayModal (display) {
-    if (display === false) {
+    showModal.classList.toggle("none-display");
+    if (display === false) { // When the close icon is clicked
         modalDiv = 'images';
         console.log("modal false");
-    } else if (display === true) {
+    } else if (display === true) { // When the main image is clicked and opens the modal
         modalDiv = 'modal';
         console.log("modal true");
     }
@@ -108,7 +116,7 @@ let displayMainImage = ``;
 // Clicking on the thumb to display a new main image based in ID
 const thumbClick = imageId => {
     idNumber = imageId;
-    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(false)">`;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(true)">`;
     mainImage.innerHTML = `${displayMainImage}`;
     
     // Starts function that checks if it is the active div

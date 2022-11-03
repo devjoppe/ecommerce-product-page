@@ -17,13 +17,15 @@ const numberOfItems = document.getElementById('itemresult'); // This one to
 const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 //const imageThumbnails = document.getElementById('thumbs'); // Maybe set this dynamic
-const imageThumbnails = document.querySelector('.thumbnail--images');
+const imageThumbnails = document.querySelectorAll('.thumbnail--images');
 const mainImage = document.getElementById('mainimage');
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
 const cartItemsText = document.getElementById("cartitems");
 const cartIcon = document.getElementById("cart");
 const cartIconNumber = document.getElementById("cartnumber");
+
+console.log(imageThumbnails[0]);
 
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
@@ -73,7 +75,8 @@ for (let i = 0; i < productThumbs.length; i++) {
     idNumber = (i+1);
     //Prints out the div with the thumbnail
     thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
-    imageThumbnails.innerHTML += `${thumbURL}`;
+    imageThumbnails[0].innerHTML += `${thumbURL}`;
+    imageThumbnails[1].innerHTML += `${thumbURL}`;
 }
 
 // Main image function
@@ -84,7 +87,7 @@ let displayMainImage = ``;
 // Clicking on the thumb to display a new main image based in ID
 const thumbClick = imageId => {
     idNumber = imageId;
-    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal()">`;
     mainImage.innerHTML = `${displayMainImage}`;
    
     // Starts function that checks if it is the active div
@@ -153,7 +156,7 @@ if (idNumber == 0) {
 showModal = document.querySelector('.modal--container');
 
 //This function can be used on the modal function
-function sayHello () {
+function displayModal () {
     showModal.classList.toggle("none-display");
 }
 
