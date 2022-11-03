@@ -17,7 +17,6 @@ const numberOfItems = document.getElementById('itemresult'); // This one to
 const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 //const imageThumbnails = document.getElementById('thumbs'); // Maybe set this dynamic
-const imageThumbnails = document.querySelector('.thumbnail--images'); // Maybe set this dynamic
 const mainImage = document.getElementById('mainimage');
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
@@ -61,22 +60,47 @@ const addRemove = btnType => {
     numberOfItems.innerHTML = `${itemNumber}`;
 }
 
-// Thumbnails
+// THUMBNAILS
 // Create a variables for the array in the object and display
 let productThumbs = product.thumbnails;
 let thumbURL = ``;
 let idNumber = 0;
+let modalStatus = false;
+let modalDiv = 'images';
+let imageThumbnails;
 
-// Gets the data from the Array and print out the data in a for-loop for the thumbs
-for (let i = 0; i < productThumbs.length; i++) {
-    //Create a ID number for the div so I can target it
-    idNumber = (i+1);
-    //Prints out the div with the thumbnail
-    thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
-    imageThumbnails.innerHTML += `${thumbURL}`;
+// Thumbnail and Modal function ###################### LOOK HERE #####################################
+let setModalDiv = (activeDiv) => {
+    // Set the div base on if the Modal is open
+    console.log(activeDiv);
+    imageThumbnails = document.querySelector('.thumbnail--' + activeDiv); // Maybe set this dynamic
+
+    // Gets the data from the Array and print out the data in a for-loop for the thumbs
+    for (let i = 0; i < productThumbs.length; i++) {
+        //Create a ID number for the div so I can target it
+        idNumber = (i+1);
+        //Prints out the div with the thumbnail
+        thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
+        imageThumbnails.innerHTML += `${thumbURL}`;
+    }
 }
 
-// Main image function
+// Set and start with a closed Modal
+setModalDiv(modalDiv);
+
+//Checks if the modal is open or closed
+function displayModal (display) {
+    if (display === false) {
+        modalDiv = 'images';
+        console.log("modal false");
+    } else if (display === true) {
+        modalDiv = 'modal';
+        console.log("modal true");
+    }
+    setModalDiv(modalDiv);
+}
+
+// MAIN IMAGE FUNCTION
 // Set IdNummer to zero to inital set and load the first image.
 idNumber = 0;
 let displayMainImage = ``;
@@ -84,9 +108,9 @@ let displayMainImage = ``;
 // Clicking on the thumb to display a new main image based in ID
 const thumbClick = imageId => {
     idNumber = imageId;
-    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="sayHello()">`;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(false)">`;
     mainImage.innerHTML = `${displayMainImage}`;
-   
+    
     // Starts function that checks if it is the active div
     thumbSlectedRemove(idNumber);
 }
@@ -147,12 +171,6 @@ const addToCart = inCart => {
 // First time the page load it fires the thumbClick function with the first image
 if (idNumber == 0) {
     thumbClick(1);
-}
-
-// Modal function
-//This function can be used on the modal function
-function sayHello () {
-    console.log("hejsan");
 }
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
