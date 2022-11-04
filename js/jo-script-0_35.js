@@ -10,15 +10,17 @@ const product = {
 }
 
 // Set variables for the DOM elements
+// THis is crazy - I need to develop my skills to make this more effective
+// Don´t use ID all the time - Just use querySelector.
 const titleText = document.getElementById('titletext');
 const descriptionText = document.getElementById('description');
 const priceText = document.getElementById('itemprice'); // Maybe set these as variables so I can change them
 const numberOfItems = document.getElementById('itemresult'); // This one to
 const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
-//const imageThumbnails = document.getElementById('thumbs'); // Maybe set this dynamic
 const imageThumbnails = document.querySelectorAll('.thumbnail--images');
-const mainImage = document.getElementById('mainimage');
+//const mainImage = document.getElementById('mainimage');
+const mainImage = document.querySelectorAll('.mainimage--image');
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
 const cartItemsText = document.getElementById("cartitems");
@@ -70,6 +72,8 @@ let thumbURL = ``;
 let idNumber = 0;
 let loadView = 0;
 
+// Main image function
+
 // Display thumbs on page or Modal (lightbox)
 const pageModalView = loadViewNumber => {
     // Gets the data from the Array and print out the data in a for-loop for the thumbs
@@ -77,35 +81,30 @@ const pageModalView = loadViewNumber => {
         //Create a ID number for the div so I can target it
         idNumber = (i+1);
         //Prints out the div with the thumbnail
-        thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
+        thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber}, ${loadViewNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
         if(loadViewNumber == 0 ) {
             imageThumbnails[1].innerHTML = ``;
             imageThumbnails[0].innerHTML += `${thumbURL}`;
         } else if (loadViewNumber == 1) {
             imageThumbnails[0].innerHTML = ``;
             imageThumbnails[1].innerHTML += `${thumbURL}`;
+            mainImage[1].innerHTML = `${displayMainImage}`;
         }
     }
 }
 
+//TODO:########################ATT GÖRA NÄSTA #############################
+// Lägg in så att Main image laddas på samma sätt när man laddar sidan + klickar på main image.
+
 pageModalView(loadView)
 
-// Main image function
+console.log(`LoadView är`, loadView);
+
 // Set IdNummer to zero to inital set and load the first image.
 idNumber = 0;
 let displayMainImage = ``;
 
-// Clicking on the thumb to display a new main image based in ID
-const thumbClick = imageId => {
-    idNumber = imageId;
-    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(1)">`;
-    mainImage.innerHTML = `${displayMainImage}`;
-   
-    // Starts function that checks if it is the active div
-    thumbSlectedRemove(idNumber);
-}
-
-// Functions that add Selected on the clicked div
+// Functions that add Selected on clicked div
 const thumbSlectedRemove = divId => {
     console.log("Startar funktionen");
     for (let i = 0; i < productThumbs.length; i++) {
@@ -118,6 +117,23 @@ const thumbSlectedRemove = divId => {
         }
     }
 }
+
+// Clicking on the thumb to display a new main image based in ID
+function thumbClick(imageId, loadViewNumber) {
+    idNumber = imageId;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(1)">`;
+
+    if(loadViewNumber == 0) {
+        mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
+    } else if (loadViewNumber == 1) {
+        mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
+    }
+    // Starts function that checks if it is the active div
+    thumbSlectedRemove(idNumber);
+}
+
+thumbClick(1, 0);
+
 
 // Cart functions
 const displayCart = () => {
