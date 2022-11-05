@@ -19,15 +19,12 @@ const numberOfItems = document.getElementById('itemresult'); // This one to
 const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 const imageThumbnails = document.querySelectorAll('.thumbnail--images');
-//const mainImage = document.getElementById('mainimage');
 const mainImage = document.querySelectorAll('.mainimage--image');
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
 const cartItemsText = document.getElementById("cartitems");
 const cartIcon = document.getElementById("cart");
 const cartIconNumber = document.getElementById("cartnumber");
-
-console.log(imageThumbnails[0]);
 
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
@@ -72,14 +69,13 @@ let thumbURL = ``;
 let idNumber = 0;
 let loadView = 0;
 
-// Main image function
-
 // Display thumbs on page or Modal (lightbox)
 const pageModalView = loadViewNumber => {
     // Gets the data from the Array and print out the data in a for-loop for the thumbs
     for (let i = 0; i < productThumbs.length; i++) {
         //Create a ID number for the div so I can target it
         idNumber = (i+1);
+        console.log('loadView number:', loadViewNumber);
         //Prints out the div with the thumbnail
         thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber}, ${loadViewNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
         if(loadViewNumber == 0 ) {
@@ -89,13 +85,12 @@ const pageModalView = loadViewNumber => {
             imageThumbnails[0].innerHTML = ``;
             imageThumbnails[1].innerHTML += `${thumbURL}`;
             mainImage[1].innerHTML = `${displayMainImage}`;
+           
         }
     }
 }
 
-//TODO:########################ATT GÖRA NÄSTA #############################
-// Lägg in så att Main image laddas på samma sätt när man laddar sidan + klickar på main image.
-
+// Init the Modal view
 pageModalView(loadView)
 
 console.log(`LoadView är`, loadView);
@@ -106,10 +101,11 @@ let displayMainImage = ``;
 
 // Functions that add Selected on clicked div
 const thumbSlectedRemove = divId => {
-    console.log("Startar funktionen");
+    console.log("Clicking thumb: thumbSelectedRemove");
     for (let i = 0; i < productThumbs.length; i++) {
-        let idNumber = (i+1);
-        const thumbSelected = document.getElementById("thumbnail-"+idNumber);
+        idNumber = (i+1);
+        let thumbSelected = document.getElementById("thumbnail-"+idNumber);
+        console.log('Get the div:', thumbSelected);
         if(idNumber == divId) {
             thumbSelected.classList.add("selected");
         } else {
@@ -118,10 +114,13 @@ const thumbSlectedRemove = divId => {
     }
 }
 
-// Clicking on the thumb to display a new main image based in ID
+//TODO: Jag hmåste få tag i IDnumret som skickas med när man klickar på Close så att rätt bild och thumb visas.
+
+// Main image function
+// Clicking on the thumb to display a new main image based in ID, if it will show in the Modal or page view
 function thumbClick(imageId, loadViewNumber) {
     idNumber = imageId;
-    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(1)">`;
+    displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(1, ${idNumber})">`;
 
     if(loadViewNumber == 0) {
         mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
@@ -130,10 +129,11 @@ function thumbClick(imageId, loadViewNumber) {
     }
     // Starts function that checks if it is the active div
     thumbSlectedRemove(idNumber);
+    console.log('Check the selected number:', idNumber)
 }
 
+// Init the thumbimages with a selections
 thumbClick(1, 0);
-
 
 // Cart functions
 const displayCart = () => {
@@ -179,14 +179,21 @@ if (idNumber == 0) {
     thumbClick(1);
 }
 
-// Modal function
-showModal = document.querySelector('.modal--container');
+// Query the modal div
+const showModal = document.querySelector('.modal--container');
 
-//This function can be used on the modal function
-function displayModal (viewSelector) {
+//const closeModal = document.querySelector('.modal-images');
+const closeModal = document.querySelector('.close-modal');
+
+//This function can be used on the modal function, body > div.screen-width > div > main > div.left > div.modal--container > div > span
+function displayModal (viewSelector, thumbId) {
     showModal.classList.toggle("none-display");
+
+    closeModal.setAttribute('onClick', `displayModal(0, ${thumbId})`);
+    
+    // Show selected images and active thumb
     pageModalView(viewSelector);
-    console.log(viewSelector);
+    thumbSlectedRemove(thumbId);
 }
 
 // Bind the data and display it to the DOM when the JavaScript is loaded for the first time.
