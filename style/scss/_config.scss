@@ -123,9 +123,11 @@ nav {
     z-index: 100;
     .modal-images {
         display: inline-block;
-        height: 200px;
-        width: 600px;
-        //background: yellow;
+        .mainimage--image {
+            img {
+                width: 512px;
+            }
+        }
     }
 }
 
