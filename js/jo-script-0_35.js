@@ -107,7 +107,6 @@ const thumbSlectedRemove = divId => {
     for (let i = 0; i < productThumbs.length; i++) {
         idNumber = (i+1);
         let thumbSelected = document.getElementById("thumbnail-"+idNumber);
-        console.log(thumbSelected);
         if(idNumber == divId) {
             thumbSelected.classList.add("selected");
         } else {
