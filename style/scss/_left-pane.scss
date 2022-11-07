@@ -36,6 +36,12 @@
     }
 }
 
+.modal-thumbs {
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+}
+
 // Lets see how to handle this
 .selected {
     border: 2px solid config.$color-primary-orange;
