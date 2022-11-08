@@ -122,7 +122,9 @@ nav {
     background: rgba(0,0,0,0.8);
     z-index: 100;
     .modal-images {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        position: relative;
         .mainimage--image {
             img {
                 width: 720px;
@@ -130,6 +132,9 @@ nav {
             }
         }
         .close-modal {
+            position: absolute;
+            right: 0px;
+            top: -40px;
             cursor: pointer;
             img {
                 width: 20px;
@@ -138,8 +143,29 @@ nav {
             svg path {
                 fill: white;
             }
+            &:hover {
+                svg path {
+                    fill: $color-primary-orange;
+                }
+            }
         }
     }
+}
+
+.step-images {
+    position: absolute;
+    z-index: 100;
+    top: 40%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.steps {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
 }
 
 // Attributes
