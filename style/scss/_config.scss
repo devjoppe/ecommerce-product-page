@@ -73,6 +73,10 @@ nav {
     display: flex;
 }
 
+.mobile-modal {
+    display: none;
+}
+
 .header {
     display: flex;
     flex-direction: row;
@@ -182,6 +186,14 @@ nav {
     &.next-image {
         left: -25px;
     }
+}
+
+.menu-close {
+    display: none;
+}
+
+.hamburger-menu {
+    display: none;
 }
 
 // Attributes
