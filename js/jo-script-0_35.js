@@ -26,6 +26,41 @@ const cartItemsText = document.getElementById("cartitems");
 const cartIcon = document.getElementById("cart");
 const cartIconNumber = document.getElementById("cartnumber");
 
+// Mobile menu toggle
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const hamburgerClosed = document.querySelector('.menu-close');
+const mainMenu = document.querySelector('.menu');
+const mainMenuBg = document.querySelector('.mobile-modal');
+
+hamburgerMenu.addEventListener('click', () => {
+    menuToggle();
+})
+
+hamburgerClosed.addEventListener('click', () => {
+    menuToggle();
+})
+
+const menuToggle = () => {
+    mainMenu.classList.toggle('m-none-display');
+    mainMenuBg.classList.toggle('m-none-display');
+}
+
+
+//TODO: Fixa designen i desktop med ViewLoad 0 endast. Se till att steps finns i en Div även i desktop men är gömd. Denna skall endast visas när webbsidan är 720 eller mindre.
+//TODO: Ta bort så att man kan klicka på main image när skärmen är 720 eller mindre.
+
+// Function that check what width the windows has. Updates on every resize.
+// Alson one of my crazy solutions - but hey! If it works :)
+let windowWidth;
+window.onresize = displayWindowSize;
+
+function displayWindowSize () {
+    windowWidth = window.innerWidth;
+    console.log(windowWidth);
+}
+
+// #############
+
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
 ordinaryPriceText.style.display = "none";
