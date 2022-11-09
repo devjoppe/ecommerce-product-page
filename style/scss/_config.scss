@@ -170,6 +170,12 @@ nav {
     height: 50px;
     border-radius: 50%;
     background: white;
+    cursor: pointer;
+    &:hover {
+        svg path {
+            stroke: $color-primary-orange;
+        }   
+    }
     &.previous-image {
         right: -25px;
     }
