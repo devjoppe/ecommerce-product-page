@@ -1,0 +1,156 @@
+@use 'config';
+
+@media only screen and (max-width: 480px) {
+    main {
+        flex-direction: column;
+    }
+    header {
+        width: 100%;
+        position: fixed;
+        background: white; 
+    }
+    nav {
+        flex-direction: column;
+        height: 100vh;
+        background: white;
+    }
+    .left {
+        margin-top: 69px;
+    }
+    .header--right {
+        .user {
+            margin-left: 25px;
+            img {
+                height: 35px;
+            }
+        }
+    }
+    .header--left {
+        width: 100%;
+        .logo {
+            height: 69px;
+        }
+        .menu {
+            width: 75%;
+            a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                margin: 20px 0px 0px 25px;
+                color: config.$color-very-dark-blue;
+                height: auto;
+                box-sizing: border-box;
+                font-size: 18px;
+                font-weight: bold;
+                &:hover {
+                    border-bottom: none;
+                    color: inherit;
+                }
+                &:focus {
+                    border-bottom: none;
+                    color: inherit;
+                }
+            }
+        }
+    }
+    .menu-close {
+        display: block;
+        margin: 25px 0 15px 25px;
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    .mobile-modal {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.8);
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+    }
+    .hamburger-menu {
+        display: flex;
+        height: 69px;
+        align-items: center;
+        margin-right: 16px;
+        img {
+            height: 20px;
+        }
+    }
+    .header {
+        margin-bottom: 0px;
+        height: 69px;
+        box-sizing: border-box;
+        padding: 0 25px 0 25px;
+    }
+    .screen-width {
+        width: 100%;
+    }
+    .website-width {
+        width: 100%;
+        padding: 0;
+    }
+    .left {
+        margin: 0;
+    }
+    .right {
+        margin: 0 25px 0 25px;
+    }
+    .thumbnail--images {
+        display: none;
+    }
+    .mainimage--image img {
+        width: 100%;
+        border-radius: 0px;
+    }
+    .product--price {
+        flex-direction: row;
+        .price {
+            margin-bottom: 0px;
+        }
+    }
+    .ordinaryprice {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .addtocart {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 32px;
+    }
+    .addtocart--numberitems {
+        margin-right: 0px;
+        width: 100%;
+        margin-bottom: 16px;
+        span {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        }
+    }
+    .mobile {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 200;
+    }
+    .cart--checkout {
+        position: fixed;
+        left: 8px;
+        top: 78px;
+        width: 96%;
+    }
+    button {
+        &.primary {
+            box-shadow: none;
+        }
+    }
+    .m-none-display {
+        display: none;
+    }
+}
