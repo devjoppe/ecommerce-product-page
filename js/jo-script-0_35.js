@@ -69,6 +69,8 @@ let thumbURL = ``;
 let idNumber = 0;
 let loadView = 0;
 
+let nextId = 0;
+
 // Display thumbs on page or Modal (lightbox)
 const pageModalView = (loadViewNumber, imageId) => {
     // Gets the data from the Array and print out the data in a for-loop for the thumbs
@@ -101,8 +103,31 @@ console.log(`LoadView är`, loadView);
 idNumber = 0;
 let displayMainImage = ``;
 
+// Function to click the next icons in the modal view
+const nextImage = typeButton => {
+    console.log("ID number:", nextId);
+    console.log("Load view:", loadView);
+
+    if (typeButton == 'next') {    
+        nextId++;
+        console.log("BT: next", nextId);
+        if (nextId > 4) {
+            nextId = 1;
+        }
+    } else if (typeButton == 'previous') {
+        console.log("BT: previous");
+        nextId--;
+        if (nextId < 1) {
+            nextId = 4;
+        }
+    }
+
+    thumbClick(nextId, 1); // This one I need to set to dynamic
+}
+
 // Functions that add Selected on clicked div
 const thumbSlectedRemove = divId => {
+    nextId = divId;
     console.log("Clicking thumb: thumbSelectedRemove");
     for (let i = 0; i < productThumbs.length; i++) {
         idNumber = (i+1);
@@ -118,7 +143,9 @@ const thumbSlectedRemove = divId => {
 // Main image function
 // Clicking on the thumb to display a new main image based in ID, if it will show in the Modal or page view
 function thumbClick(imageId, loadViewNumber) {
-    idNumber = imageId;
+    
+    idNumber = Number(imageId);
+    console.log("WHAT NUMBER: ", idNumber);
 
     if(loadViewNumber == 0) {
         console.log("Visar desktop bild");
@@ -131,8 +158,9 @@ function thumbClick(imageId, loadViewNumber) {
         mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
     }
     // Starts function that checks if it is the active div
-    thumbSlectedRemove(idNumber);
     console.log('Check the selected number:', idNumber)
+    thumbSlectedRemove(idNumber);
+    
 }
 
 // Init the thumbimages with a selections
