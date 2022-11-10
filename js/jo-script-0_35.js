@@ -20,13 +20,16 @@ const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 const imageThumbnails = document.querySelectorAll('.thumbnail--images');
 const mainImage = document.querySelectorAll('.mainimage--image');
+
+
+
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
 const cartItemsText = document.getElementById("cartitems");
 const cartIcon = document.getElementById("cart");
 const cartIconNumber = document.getElementById("cartnumber");
 
-// Mobile menu toggle
+// Simple Mobile menu toggle
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const hamburgerClosed = document.querySelector('.menu-close');
 const mainMenu = document.querySelector('.menu');
@@ -45,22 +48,17 @@ const menuToggle = () => {
     mainMenuBg.classList.toggle('m-none-display');
 }
 
-
 //TODO: Fixa designen i desktop med ViewLoad 0 endast. Se till att steps finns i en Div även i desktop men är gömd. Denna skall endast visas när webbsidan är 720 eller mindre.
 //TODO: Ta bort så att man kan klicka på main image när skärmen är 720 eller mindre.
 
 // Function that check what width the windows has. Updates on every resize.
 // Alson one of my crazy solutions - but hey! If it works :)
-let windowWidth;
+let windowWidth = window.innerWidth;
 window.onresize = displayWindowSize;
 
-function displayWindowSize () {
-    windowWidth = window.innerWidth;
-    console.log(windowWidth);
-}
+// Lägger den andra koden längst ner
 
 // #############
-
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
 ordinaryPriceText.style.display = "none";
@@ -173,6 +171,7 @@ const thumbSlectedRemove = divId => {
             thumbSelected.classList.remove("selected");
         }
     }
+    //displayWindowSize(); INFINITY LOOP
 }
 
 // Main image function
@@ -180,26 +179,74 @@ const thumbSlectedRemove = divId => {
 function thumbClick(imageId, loadViewNumber) {
     
     idNumber = Number(imageId);
-    console.log("WHAT NUMBER: ", idNumber);
+    console.log("WHAT LOADNUMBER: ", loadViewNumber);
 
     if(loadViewNumber == 0) {
         console.log("Visar desktop bild");
-        displayMainImage = `<img src="images/image-product-${idNumber}.jpg" onClick="displayModal(1, ${idNumber})">`;
+        displayMainImage = `<img class="image--main" src="images/image-product-${idNumber}.jpg" id="${idNumber}" onClick="displayModal(1, ${idNumber})">`;
         mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
+    } else if (loadViewNumber == 3) {
+        console.log('Image view 3');
+        console.log('Image ID is: ', idNumber, ' Mobile VIEW');
+        displayMainImage = `<img class="image--main" src="images/image-product-${idNumber}.jpg" id="${idNumber}">`;
+        mainImage[0].innerHTML = `${displayMainImage}`;
     } else if (loadViewNumber == 1) {
         // When the modal is open. The main image is not clickable.
         console.log("visar modal bild");
-        displayMainImage = `<img src="images/image-product-${idNumber}.jpg">`;
+        displayMainImage = `<img class="image--main" src="images/image-product-${idNumber}.jpg">`;
         mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
     }
     // Starts function that checks if it is the active div
     console.log('Check the selected number:', idNumber)
+    // den bryter när en annan funktion körs!!!!!!!!! #####
     thumbSlectedRemove(idNumber);
-    
+    //displayWindowSize(loadViewNumber, idNumber);
 }
 
 // Init the thumbimages with a selections
 thumbClick(1, 0);
+
+// Query the modal div
+const showModal = document.querySelector('.modal--container');
+
+//TODO: Lägger in mobile main image responsove disable click
+
+//console.log("WHATS MY ID: ", mainImageAttr);
+
+function displayWindowSize () {
+
+    const mainImageAttr = document.querySelector('.image--main');
+    let imageAttr = Number(mainImageAttr.getAttribute('id'));
+
+
+    windowWidth = window.innerWidth;
+    console.log(windowWidth);
+    
+    console.log('BILDENS ID: ', imageAttr);
+    //thumbClick(imageAttr, 3);
+
+    let widthLoadView = 0;
+
+    if (windowWidth <= 480) {
+        //thumbClick(imageAttr, 3);
+        widthLoadView = 3;
+        console.log('OM DEN ÄR MINDRE ÄN: ', imageAttr);
+        console.log('Smaller then 480', imageAttr);
+        if (showModal.classList.contains("none-display")) {
+            console.log('Modal is hidden')
+        } else {
+            showModal.classList.add("none-display");
+            //thumbClick(imageAttr, 3);
+        }
+    } else {
+        widthLoadView = 0;
+        //thumbClick(imageAttr, 0);
+        console.log('width: CHANGE NOTHING---WIDER?', imageAttr);
+    }
+    thumbClick(imageAttr, widthLoadView)
+}
+
+displayWindowSize();
 
 // Cart functions
 const displayCart = () => {
@@ -244,9 +291,6 @@ const addToCart = inCart => {
 if (idNumber == 0) {
     thumbClick(1);
 }
-
-// Query the modal div
-const showModal = document.querySelector('.modal--container');
 
 //const closeModal = document.querySelector('.modal-images');
 const closeModal = document.querySelector('.close-modal');
