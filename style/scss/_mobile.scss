@@ -8,6 +8,7 @@
         width: 100%;
         position: fixed;
         background: white; 
+        z-index: 200;
     }
     nav {
         flex-direction: column;
@@ -164,6 +165,7 @@
     .mobile-view-steps {
         display: flex;
         top: 20%;
+        z-index: 10;
     }
     .steps {
         &.previous-image {
