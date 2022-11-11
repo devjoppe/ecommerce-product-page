@@ -123,7 +123,7 @@ const pageModalView = (loadViewNumber, imageId) => {
             if(idNumber >= productThumbs.length) {
                 thumbClick(imageId, loadViewNumber);
             }
-        }
+        } 
     }
 }
 
@@ -235,16 +235,30 @@ function displayWindowSize () {
         if (showModal.classList.contains("none-display")) {
             console.log('Modal is hidden')
         } else {
-            showModal.classList.add("none-display");
+            //showModal.classList.add("none-display");
             //thumbClick(imageAttr, 3);
+            console.log(imageAttr + ' BOM Shakalack!!');
+            console.log('LÄSER DEN EFTER DETTA?????');
+            displayModal(3, imageAttr)
+            console.log('TJO!');
         }
     } else {
         widthLoadView = 0;
-        //thumbClick(imageAttr, 0);
         console.log('width: CHANGE NOTHING---WIDER?', imageAttr);
+        if(!imageThumbnails[0].hasChildNodes() && showModal.classList.contains("none-display")) {
+            console.log('---- HAS NO FIRST-CHILD ----');
+            pageModalView(0, imageAttr);
+            //imageThumbnails[0].innerHTML += `${thumbURL}`;
+        }
     }
+
+    
+    
+    
     thumbClick(imageAttr, widthLoadView)
 }
+
+console.log(imageThumbnails);
 
 displayWindowSize();
 
