@@ -161,4 +161,16 @@
     .mainimage--image {
         cursor: auto;
     }
+    .mobile-view-steps {
+        display: flex;
+        top: 20%;
+    }
+    .steps {
+        &.previous-image {
+            right: 20px;
+        }
+        &.next-image {
+            left: 20px;
+        }
+    }
 }

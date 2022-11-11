@@ -26,9 +26,9 @@
     width: 360px;
     //height: 280px; Flytta denna till när det inte finns något i carten
     background: config.$color-white;
-    z-index: 10;
     border-radius: 10px;
     box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.5);
+    z-index: 400;
     .title {
         display: flex;
         height: 24px;
