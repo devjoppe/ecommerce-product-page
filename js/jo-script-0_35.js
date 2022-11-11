@@ -11,7 +11,6 @@ const product = {
 
 // Set variables for the DOM elements
 // THis is crazy - I need to develop my skills to make this more effective
-// Don´t use ID all the time - Just use querySelector.
 const titleText = document.getElementById('titletext');
 const descriptionText = document.getElementById('description');
 const priceText = document.getElementById('itemprice');
@@ -20,9 +19,6 @@ const discountProcentText = document.getElementById('discountprice');
 const ordinaryPriceText = document.getElementById('oldprice');
 const imageThumbnails = document.querySelectorAll('.thumbnail--images');
 const mainImage = document.querySelectorAll('.mainimage--image');
-
-
-
 const productCompanyText = document.getElementById('productcompany');
 const cartCheckout = document.getElementById("cartcheckout");
 const cartItemsText = document.getElementById("cartitems");
@@ -48,17 +44,10 @@ const menuToggle = () => {
     mainMenuBg.classList.toggle('m-none-display');
 }
 
-//TODO: Fixa designen i desktop med ViewLoad 0 endast. Se till att steps finns i en Div även i desktop men är gömd. Denna skall endast visas när webbsidan är 720 eller mindre.
-//TODO: Ta bort så att man kan klicka på main image när skärmen är 720 eller mindre.
-
 // Function that check what width the windows has. Updates on every resize.
-// Alson one of my crazy solutions - but hey! If it works :)
 let windowWidth = window.innerWidth;
 window.onresize = displayWindowSize;
 
-// Lägger den andra koden längst ner
-
-// #############
 // Hide the discount and ordinary price from the start
 discountProcentText.style.display = "none";
 ordinaryPriceText.style.display = "none";
@@ -102,6 +91,7 @@ let thumbURL = ``;
 let idNumber = 0;
 let loadView = 0;
 
+// Variable for mobile view
 let nextId = 0;
 
 // Display thumbs on page or Modal (lightbox)
@@ -137,9 +127,10 @@ idNumber = 0;
 let displayMainImage = ``;
 
 // Function to click the next icons in the modal view
-const nextImage = typeButton => {
+const nextImage = (typeButton, checkView) => {
     console.log("ID number:", nextId);
     console.log("Load view:", loadView);
+    console.log('ceckview: ', checkView);
 
     if (typeButton == 'next') {    
         nextId++;
@@ -154,8 +145,7 @@ const nextImage = typeButton => {
             nextId = 4;
         }
     }
-
-    thumbClick(nextId, 1); // This one I need to set to dynamic
+    thumbClick(nextId, checkView); // This one I need to set to dynamic
 }
 
 // Functions that add Selected on clicked div
@@ -171,7 +161,6 @@ const thumbSlectedRemove = divId => {
             thumbSelected.classList.remove("selected");
         }
     }
-    //displayWindowSize(); INFINITY LOOP
 }
 
 // Main image function
@@ -198,9 +187,7 @@ function thumbClick(imageId, loadViewNumber) {
     }
     // Starts function that checks if it is the active div
     console.log('Check the selected number:', idNumber)
-    // den bryter när en annan funktion körs!!!!!!!!! #####
     thumbSlectedRemove(idNumber);
-    //displayWindowSize(loadViewNumber, idNumber);
 }
 
 // Init the thumbimages with a selections
@@ -209,64 +196,52 @@ thumbClick(1, 0);
 // Query the modal div
 const showModal = document.querySelector('.modal--container');
 
-//TODO: Lägger in mobile main image responsove disable click
-
-//console.log("WHATS MY ID: ", mainImageAttr);
-
+// Calculate the browser width
 function displayWindowSize () {
 
     const mainImageAttr = document.querySelector('.image--main');
     let imageAttr = Number(mainImageAttr.getAttribute('id'));
 
-
     windowWidth = window.innerWidth;
     console.log(windowWidth);
-    
-    console.log('BILDENS ID: ', imageAttr);
-    //thumbClick(imageAttr, 3);
 
     let widthLoadView = 0;
 
+    // Handles the main image and thumbs when is in mobile view
     if (windowWidth <= 480) {
-        //thumbClick(imageAttr, 3);
         widthLoadView = 3;
         console.log('OM DEN ÄR MINDRE ÄN: ', imageAttr);
         console.log('Smaller then 480', imageAttr);
         if (showModal.classList.contains("none-display")) {
             console.log('Modal is hidden')
         } else {
-            //showModal.classList.add("none-display");
-            //thumbClick(imageAttr, 3);
-            console.log(imageAttr + ' BOM Shakalack!!');
-            console.log('LÄSER DEN EFTER DETTA?????');
             displayModal(3, imageAttr)
-            console.log('TJO!');
         }
     } else {
         widthLoadView = 0;
         console.log('width: CHANGE NOTHING---WIDER?', imageAttr);
+        // Bugfix: If dekstop view donp´t have thumbnails and the modal is hidden, then show thumbs.
         if(!imageThumbnails[0].hasChildNodes() && showModal.classList.contains("none-display")) {
             console.log('---- HAS NO FIRST-CHILD ----');
             pageModalView(0, imageAttr);
-            //imageThumbnails[0].innerHTML += `${thumbURL}`;
         }
     }
 
-    
-    
-    
     thumbClick(imageAttr, widthLoadView)
 }
 
-console.log(imageThumbnails);
-
+// Start the DisplayWindow Function
 displayWindowSize();
+
+const stepsVisableMobile = document.querySelector('.mobile-view-steps');
 
 // Cart functions
 const displayCart = () => {
     console.log("Toggeling the cart");
     // Displaying and hiding the cart
     cartCheckout.classList.toggle("none-display");
+    // When mobile view - Hack
+    stepsVisableMobile.classList.toggle("none-display");
 }
 
 // Updates the cart and displays the information, or remove items from the cart
