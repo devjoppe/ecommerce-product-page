@@ -100,7 +100,6 @@ const pageModalView = (loadViewNumber, imageId) => {
     for (let i = 0; i < productThumbs.length; i++) {
         //Create a ID number for the div so I can target it
         idNumber = (i+1);
-        console.log('loadView number:', loadViewNumber);
         //Prints out the div with the thumbnail
         thumbURL = `<div id="thumbnail-${idNumber}" onClick="thumbClick(${idNumber}, ${loadViewNumber})" class="thumbimage"><img src="images/${productThumbs[i]}"></div>`;
         if(loadViewNumber == 0 ) {
@@ -120,26 +119,18 @@ const pageModalView = (loadViewNumber, imageId) => {
 // Init the Modal view
 pageModalView(loadView)
 
-console.log(`LoadView är`, loadView);
-
 // Set IdNummer to zero to inital set and load the first image.
 idNumber = 0;
 let displayMainImage = ``;
 
 // Function to click the next icons in the modal view
 const nextImage = (typeButton, checkView) => {
-    console.log("ID number:", nextId);
-    console.log("Load view:", loadView);
-    console.log('ceckview: ', checkView);
-
     if (typeButton == 'next') {    
         nextId++;
-        console.log("BT: next", nextId);
         if (nextId > 4) {
             nextId = 1;
         }
     } else if (typeButton == 'previous') {
-        console.log("BT: previous");
         nextId--;
         if (nextId < 1) {
             nextId = 4;
@@ -151,7 +142,6 @@ const nextImage = (typeButton, checkView) => {
 // Functions that add Selected on clicked div
 const thumbSlectedRemove = divId => {
     nextId = divId;
-    console.log("Clicking thumb: thumbSelectedRemove");
     for (let i = 0; i < productThumbs.length; i++) {
         idNumber = (i+1);
         let thumbSelected = document.getElementById("thumbnail-"+idNumber);
@@ -168,25 +158,18 @@ const thumbSlectedRemove = divId => {
 function thumbClick(imageId, loadViewNumber) {
     
     idNumber = Number(imageId);
-    console.log("WHAT LOADNUMBER: ", loadViewNumber);
-
     if(loadViewNumber == 0) {
-        console.log("Visar desktop bild");
         displayMainImage = `<img class="image--main" src="images/image-product-${idNumber}.jpg" id="${idNumber}" onClick="displayModal(1, ${idNumber})">`;
         mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
     } else if (loadViewNumber == 3) {
-        console.log('Image view 3');
-        console.log('Image ID is: ', idNumber, ' Mobile VIEW');
         displayMainImage = `<img class="image--main" src="images/image-product-${idNumber}.jpg" id="${idNumber}">`;
         mainImage[0].innerHTML = `${displayMainImage}`;
     } else if (loadViewNumber == 1) {
         // When the modal is open. The main image is not clickable.
-        console.log("visar modal bild");
         displayMainImage = `<img class="image--main" src="images/image-product-${idNumber}.jpg">`;
         mainImage[loadViewNumber].innerHTML = `${displayMainImage}`;
     }
     // Starts function that checks if it is the active div
-    console.log('Check the selected number:', idNumber)
     thumbSlectedRemove(idNumber);
 }
 
@@ -203,26 +186,21 @@ function displayWindowSize () {
     let imageAttr = Number(mainImageAttr.getAttribute('id'));
 
     windowWidth = window.innerWidth;
-    console.log(windowWidth);
 
     let widthLoadView = 0;
 
     // Handles the main image and thumbs when is in mobile view
     if (windowWidth <= 480) {
         widthLoadView = 3;
-        console.log('OM DEN ÄR MINDRE ÄN: ', imageAttr);
-        console.log('Smaller then 480', imageAttr);
         if (showModal.classList.contains("none-display")) {
-            console.log('Modal is hidden')
+            // Nothing happens
         } else {
             displayModal(3, imageAttr)
         }
     } else {
         widthLoadView = 0;
-        console.log('width: CHANGE NOTHING---WIDER?', imageAttr);
-        // Bugfix: If dekstop view donp´t have thumbnails and the modal is hidden, then show thumbs.
+        // Bugfix: If dekstop view don´t have thumbnails and the modal is hidden, then show thumbs.
         if(!imageThumbnails[0].hasChildNodes() && showModal.classList.contains("none-display")) {
-            console.log('---- HAS NO FIRST-CHILD ----');
             pageModalView(0, imageAttr);
         }
     }
@@ -237,7 +215,6 @@ const stepsVisableMobile = document.querySelector('.mobile-view-steps');
 
 // Cart functions
 const displayCart = () => {
-    console.log("Toggeling the cart");
     // Displaying and hiding the cart
     cartCheckout.classList.toggle("none-display");
     // When mobile view - Hack
@@ -252,9 +229,7 @@ cartItemsText.innerHTML = displayInCart;
 
 const addToCart = inCart => {
     itemCartCheck = inCart;
-    console.log("CART");
     if (itemCartCheck >= 1) {
-        console.log("adding to cart" + addTotalPrice);
         cartIconNumber.innerHTML = `<div class="cart-number">${itemNumber}</div>`;
         cartItemsText.innerHTML = `
         <div class="choosen-item">
@@ -272,7 +247,6 @@ const addToCart = inCart => {
     } else {
         cartItemsText.innerHTML = displayInCart;
         cartIconNumber.innerHTML = ``;
-        console.log("No items in cart");
     }
 }
 
