@@ -1,4 +1,4 @@
-# Welcome to my E-commerce product page solution 👋
+# E-commerce product page solution 👋
 
 This is my solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6).
 
@@ -23,9 +23,9 @@ Solution: https://devjoppe.github.io/ecommerce-product-page/
 
 **My solution**
 
-![](/images/site-design-solution.png.jpg)
+![](images/site-design-solution.png)
 
-### Breakpoints
+### Mobile view
 
 Mobile: 480px
 
